@@ -98,6 +98,11 @@ let g:vimnotebook#note_reg = "r"
 ```
 This set @r to use.
 
+### Limitation
+This plugin only send key to terminal.
+And so, you cannot send such words like "<CR>".
+
+If you use neovim, there is no such limitation.
 
 # 日本語
 英語うまく書けないお(´・ω・｀)
@@ -202,3 +207,7 @@ extend(end_codes, {"python": "exit"})
 let g:vimnotebook#note_reg = "r"
 ```
 
+### これのダメなところ
+これ、vimだとキーストロークをそのまま反映するから、
+<CR>みたいな文字列は改行として受け取られます。
+neovimなら大丈夫と思います、多分。
