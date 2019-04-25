@@ -76,7 +76,7 @@ elseif v:progname == "vim"
   function! vimnotebook#End ()
     execute "call term_sendkeys(".g:vimnotebook#note_buf.", g:vimnotebook#end_codes[g:vimnotebook#note_lang].\"\n\")"
     execute "let @".g:vimnotebook#note_reg." =\"".g:vimnotebook#end_codes[g:vimnotebook#note_lang]."\""
-    call term_sendkeys(g:NoteBook#note_buf, "exit"."\n")
+    call term_sendkeys(g:vimnotebook#note_buf, "exit"."\n")
   endfunction
 endif
 
