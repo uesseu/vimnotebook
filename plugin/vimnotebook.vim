@@ -12,13 +12,13 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 let g:loaded_vimnotebook = 1
-let g:NoteBook#note_reg = "l"
-let g:NoteBook#log_name = file.".log"
+let g:vimnotebook#note_reg = "l"
+let g:vimnotebook#log_name = expand("%:p")."log"
 
-command! RunLine call NoteBook#RunLine()
-command! -nargs=1 NoteBook call NoteBook#Start(<f-args>)
-command! RunYank call NoteBook#RunYank()
-command! EndNoteBook call NoteBook#End()
+command! RunLine call vimnotebook#RunLine()
+command! -nargs=1 NoteBook call vimnotebook#Start(<f-args>)
+command! RunYank call vimnotebook#RunYank()
+command! EndNoteBook call vimnotebook#End()
 let g:end_codes = {"python": "exit()", "R": "q(\"no\")", "node": ".exit", "bash": "exit", "sh": "exit", "ex": "exit", "ghci": ":quit"}
 
 let &cpo = s:save_cpo
