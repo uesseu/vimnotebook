@@ -94,7 +94,7 @@ You can yank paragraph by...
 By default, it uses register @l.
 If you want to use other register, use this option.
 ```vim
-let g:NoteBook#note_reg = "r"
+let g:vimnotebook#note_reg = "r"
 ```
 This set @r to use.
 
@@ -199,6 +199,6 @@ extend(end_codes, {"python": "exit"})
 もし別のレジスタを…@rを使いたいならこのようにしてください。
 
 ```vim
-let g:NoteBook#note_reg = "r"
+let g:vimnotebook#note_reg = "r"
 ```
 
