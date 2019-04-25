@@ -13,7 +13,7 @@ set cpo&vim
 
 let g:loaded_vimnotebook = 1
 let g:vimnotebook#note_reg = "l"
-let g:vimnotebook#log_name = expand("%:p")."log"
+let g:vimnotebook#log_name = expand("%:p").".log"
 
 command! RunLine call vimnotebook#RunLine()
 command! -nargs=1 NoteBook call vimnotebook#Start(<f-args>)
