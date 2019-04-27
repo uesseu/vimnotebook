@@ -14,6 +14,8 @@ set cpo&vim
 
 if g:vimnotebook#save_log == 1
   let g:vimnotebook#logger = "script "
+else
+  let g:vimnotebook#logger = ""
 endif
 
 let g:vimnotebook#lang_names = {"python": "exit()", "R": "R", "node": "javascript", "bash": "exit", "sh": "exit", "ex": "ex", "ghci": "haskell"}
@@ -63,7 +65,7 @@ if v:progname == "nvim"
 elseif v:progname == "vim"
   function! vimnotebook#Start (lang)
     let g:vimnotebook#note_lang = a:lang
-    execute "set filetype=".a:lang
+    execute "set filetype=".g:vimnotebook#lang_names[a:lang]
     execu "term ".g:vimnotebook#logger.g:vimnotebook#log_name
     for bf in getbufinfo()
       if bf["name"] == "!script ".g:vimnotebook#log_name
