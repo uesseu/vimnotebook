@@ -12,9 +12,20 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 let g:loaded_vimnotebook = 1
-let g:vimnotebook#save_log = 1
-let g:vimnotebook#note_reg = "l"
-let g:vimnotebook#log_name = expand("%:p").".log"
+
+if !exists('g:vimnotebook#save_log')
+  let g:vimnotebook#save_log = 1
+endif
+
+if !exists('let g:vimnotebook#note_reg)
+  let g:vimnotebook#note_reg = "l"
+endif
+
+if expand("%:p") == ""
+  let g:vimnotebook#log_name = "tmp.log"
+else
+  let g:vimnotebook#log_name = expand("%:p").".log"
+endif
 
 command! RunLine call vimnotebook#RunLine()
 command! -nargs=1 NoteBook call vimnotebook#Start(<f-args>)

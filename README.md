@@ -101,6 +101,15 @@ You can yank paragraph by...
 
 ### Other options
 
+#### Logfile
+
+This plugin automatically makes logfile.
+If you dont want to make it, type this.
+
+```vim
+if g:vimnotebook#save_log == 0
+```
+
 #### Register
 By default, it uses register @l.
 If you want to use other register, use this option.
@@ -218,6 +227,13 @@ extend(end_codes, {"python": "exit"})
 
 ### その他の設定
 
+#### ログ
+
+このぷらぎんは勝手にログを取ります。
+うざいならこうしてください。
+```vim
+if g:vimnotebook#save_log == 0
+```
 #### レジスタ
 このぷらぎんはデフォルトで@lレジスタを使います。
 もし別のレジスタを…@rを使いたいならこのようにしてください。
