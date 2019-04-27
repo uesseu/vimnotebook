@@ -15,7 +15,7 @@ set cpo&vim
 if g:vimnotebook#save_log == 1
   let g:vimnotebook#logger = "script "
 else
-  let g:vimnotebook#logger = ""
+  let g:vimnotebook#logger = " "
 endif
 
 let g:vimnotebook#lang_names = {"python": "exit()", "R": "R", "node": "javascript", "bash": "exit", "sh": "exit", "ex": "ex", "ghci": "haskell"}
