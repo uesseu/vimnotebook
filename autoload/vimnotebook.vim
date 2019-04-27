@@ -16,7 +16,7 @@ if g:vimnotebook#save_log == 1
   let g:vimnotebook#logger = "script "
 endif
 
-let g:vimnotebook#lang_names = {"python": "exit()", "R": "q(\"no\")", "node": ".exit", "bash": "exit", "sh": "exit", "ex": "exit", "ghci": ":quit"}
+let g:vimnotebook#lang_names = {"python": "exit()", "R": "R", "node": "javascript", "bash": "exit", "sh": "exit", "ex": "ex", "ghci": "haskell"}
 let g:vimnotebook#end_codes = {"python": "exit()", "R": "q(\"no\")", "node": ".exit", "bash": "exit", "sh": "exit", "ex": "exit", "ghci": ":quit"}
 
 
@@ -28,7 +28,7 @@ if v:progname == "nvim"
     execute "let @".g:vimnotebook#note_reg." = a:lang . \"\n\n\""
     execute "put ".g:vimnotebook#note_reg
     winc w
-    execute "set filetype=".a:lang
+    execute "set filetype=".g:vimnotebook#lang_names[a:lang]
     let g:vimnotebook#note_lang = a:lang
   endfunction
 

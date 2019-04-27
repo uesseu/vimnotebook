@@ -26,7 +26,8 @@ call dein#add('uesseu/vimnotebook')
 Write as this
 
 ```vim
-extend(end_codes, {"python": "exit"})
+extend(vimnotebook#end_codes, {"python": "exit", "node": ".exit"})
+extend(vimnotebook#lang_names, {"python": "exit", "node", "javascript"})
 nnoremap g<Up> :NoteBook python<CR>
 nnoremap g<Down> :RunYank<CR>
 nnoremap g<Left> :RunLine<CR>
@@ -37,6 +38,8 @@ And then, your vim can run interpreter.
 Logfile willbe written as "log"
 
 ### Start
+
+Command to start is
 
 ```vim
 :NoteBook [command]
@@ -49,6 +52,14 @@ for example, type
 
 and python interpreter run.
 Other interpreter can run in the same way.
+
+It is just name of interpreter.
+If your name of interpreter is not name of language,
+type like this.
+
+```vim
+extend(vimnotebook#lang_names, {"python": "exit", "node", "javascript"})
+```
 
 ### Run current line
 
@@ -66,7 +77,7 @@ Other interpreter can run in the same way.
 First, you should ending command of interpreter to use.
 
 ```vim
-extend(end_codes, {[your_language]: [end_code]})
+extend(vimnotebook#end_codes, {"python": "exit", "node": ".exit"})
 ```
 
 for example...
@@ -131,7 +142,8 @@ call dein#add('uesseu/vimnotebook')
 
 例えばこんな風に書いてしまいます。
 ```vim
-extend(end_codes, {"python": "exit"})
+extend(vimnotebook#end_codes, {"python": "exit", "node": ".exit"})
+extend(vimnotebook#lang_names, {"python": "exit", "node", "javascript"})
 nnoremap g<Up> :NoteBook python<CR>
 nnoremap g<Down> :RunYank<CR>
 nnoremap g<Left> :RunLine<CR>
@@ -150,12 +162,19 @@ nnoremap g<Right> :EndNoteBook<CR>
 ```
 
 例えばインタプリタがpythonならこうです。
+あくまでインタプリタの名前です。
 
 ```vim
 :NoteBook python
 ```
 
 そうすると、新たなターミナルが開いて、replが使えるのです。
+
+インタプリタと言語の紐付けはこうします。
+
+```vim
+extend(vimnotebook#lang_names, {"python": "exit", "node", "javascript"})
+```
 
 ### 今いる行をreplに放り込む
 
@@ -173,7 +192,7 @@ nnoremap g<Right> :EndNoteBook<CR>
 まず、終わりの言葉を入れてあげる必要があります。
 
 ```vim
-extend(end_codes, {[your_language]: [end_code]})
+extend(vimnotebook#end_codes, {"python": "exit", "node": ".exit"})
 ```
 
 例えばpythonならこうです。
