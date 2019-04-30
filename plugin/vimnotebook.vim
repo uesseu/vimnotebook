@@ -17,7 +17,7 @@ if !exists('g:vimnotebook#save_log')
   let g:vimnotebook#save_log = 1
 endif
 
-if !exists('let g:vimnotebook#note_reg)
+if !exists('let g:vimnotebook#note_reg')
   let g:vimnotebook#note_reg = "l"
 endif
 
