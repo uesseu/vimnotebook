@@ -18,7 +18,7 @@ else
   let g:vimnotebook#logger = ""
 endif
 
-let g:vimnotebook#lang_names = {"python": "exit()", "R": "R", "node": "javascript", "bash": "exit", "sh": "exit", "ex": "ex", "ghci": "haskell"}
+let g:vimnotebook#lang_names = {"python": "python", "R": "R", "node": "javascript", "bash": "bash", "sh": "sh", "ex": "ex", "ghci": "haskell"}
 let g:vimnotebook#end_codes = {"python": "exit()", "R": "q(\"no\")", "node": ".exit", "bash": "exit", "sh": "exit", "ex": "exit", "ghci": ":quit"}
 
 
