@@ -21,10 +21,14 @@ if !exists('let g:vimnotebook#note_reg')
   let g:vimnotebook#note_reg = "l"
 endif
 
-if expand("%:p") == ""
-  let g:vimnotebook#log_name = "tmp.log"
+if g:vimnotebook#save_log == 1
+  if expand("%:p") == ""
+    let g:vimnotebook#log_name = "tmp.log"
+  else
+    let g:vimnotebook#log_name = expand("%:p").".log"
+  endif
 else
-  let g:vimnotebook#log_name = expand("%:p").".log"
+  let g:vimnotebook#log_name = ""
 endif
 
 command! RunLine call vimnotebook#RunLine()

@@ -66,7 +66,7 @@ elseif v:progname == "vim"
   function! vimnotebook#Start (lang)
     let g:vimnotebook#note_lang = a:lang
     execute "set filetype=".g:vimnotebook#lang_names[a:lang]
-    execu "term ".g:vimnotebook#logger.g:vimnotebook#log_name
+    execute "term ".g:vimnotebook#logger.g:vimnotebook#log_name
     for bf in getbufinfo()
       if bf["name"] == "!script ".g:vimnotebook#log_name
         let g:vimnotebook#note_buf = bf["bufnr"]
