@@ -18,7 +18,7 @@ else
   let g:vimnotebook#logger = ""
 endif
 
-let g:vimnotebook#lang_names = {"python": "python", "R": "R", "node": "javascript", "bash": "bash", "sh": "sh", "ex": "ex", "ghci": "haskell"}
+let g:vimnotebook#lang_names = {"python": "python", "R": "r", "node": "javascript", "bash": "bash", "sh": "sh", "ex": "ex", "ghci": "haskell"}
 let g:vimnotebook#end_codes = {"python": "exit()", "R": "q(\"no\")", "node": ".exit", "bash": "exit", "sh": "exit", "ex": "exit", "ghci": ":quit"}
 
 
@@ -41,6 +41,21 @@ if v:progname == "nvim"
     execute "put ".g:vimnotebook#note_reg
     winc w
   endfunction
+
+  function! vimnotebook#RunLines() range
+    let tmp = @@
+    silent normal gvy
+    let tmp_lines = @@
+    let @@ = tmp
+    let tmp_lines = split(tmp_lines, '\n')
+    for lns in tmp_lines
+      execute "let @".g:vimnotebook#note_reg." = lns.\"\n\n\""
+      winc w
+      execute "put ".g:vimnotebook#note_reg
+      winc w
+    endfor
+  endfunction
+
 
   function! vimnotebook#RunYank ()
     winc w
