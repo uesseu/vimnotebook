@@ -18,7 +18,7 @@ else
   let g:vimnotebook#logger = ""
 endif
 
-let g:vimnotebook#lang_names = {"python": "python", "R": "r", "node": "javascript", "bash": "bash", "sh": "sh", "ex": "ex", "ghci": "haskell"}
+let g:vimnotebook#lang_names = {"python": "python", "R": "r", "node": "javascript", "bash": "sh", "sh": "sh", "ex": "ex", "ghci": "haskell"}
 let g:vimnotebook#end_codes = {"python": "exit()", "R": "q(\"no\")", "node": ".exit", "bash": "exit", "sh": "exit", "ex": "exit", "ghci": ":quit"}
 
 
@@ -29,9 +29,11 @@ if v:progname == "nvim"
     execu "term ".g:vimnotebook#logger.g:vimnotebook#log_name
     execute "let @".g:vimnotebook#note_reg." = a:lang . \"\n\n\""
     execute "put ".g:vimnotebook#note_reg
+    execute "set filetype=".g:vimnotebook#lang_names[a:lang]
     winc w
     execute "set filetype=".g:vimnotebook#lang_names[a:lang]
     let g:vimnotebook#note_lang = a:lang
+    winc H
   endfunction
 
   function! vimnotebook#RunLine ()
@@ -83,11 +85,15 @@ elseif v:progname == "vim"
     execute "set filetype=".g:vimnotebook#lang_names[a:lang]
     execute "term ".g:vimnotebook#logger.g:vimnotebook#log_name
     for bf in getbufinfo()
-      if bf["name"] == "!script ".g:vimnotebook#log_name
+      "If buffer has 
+      "if bf["name"] == "!script ".g:vimnotebook#log_name
         let g:vimnotebook#note_buf = bf["bufnr"]
-      endif
+      "endif
     endfor
     call term_sendkeys(g:vimnotebook#note_buf, g:vimnotebook#note_lang."\n")
+    winc w
+    winc H
+    redraw!
   endfunction
 
   function! vimnotebook#RunLine ()
